@@ -1,0 +1,23 @@
+name: depoly on cloud server
+on:
+  push:
+  - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        ref: main
+
+    - name: deploy
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        REMOTE_HOST: lllei.top
+        REMOTE_USER: lllei
+        SOURCE: '*'
+        TARGET: ${{ secrets.REMOTE_TARGET }}
+        EXCLUDE: '.github' 
+        
