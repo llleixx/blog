@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lei">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="命令1. basics ssh -T &amp;#103;&amp;#105;&amp;#116;&amp;#x40;&amp;#103;&amp;#105;&amp;#x74;&amp;#x68;&amp;#117;&amp;#x62;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d; &#x2F;&#x2F;-T 就是不分配伪终端，只显示连接信息   测试能否连接到 github   确定已经有添加 ssh 密钥，确定 config 文件配置正确，确定能 ping 通 git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="http://lllei.top/2022/09/19/git/index.html">
+<meta property="og:site_name" content="Lei">
+<meta property="og:description" content="命令1. basics ssh -T &amp;#103;&amp;#105;&amp;#116;&amp;#x40;&amp;#103;&amp;#105;&amp;#x74;&amp;#x68;&amp;#117;&amp;#x62;&amp;#46;&amp;#x63;&amp;#111;&amp;#x6d; &#x2F;&#x2F;-T 就是不分配伪终端，只显示连接信息   测试能否连接到 github   确定已经有添加 ssh 密钥，确定 config 文件配置正确，确定能 ping 通 git">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-19T12:59:21.270Z">
+<meta property="article:modified_time" content="2023-02-06T17:30:33.769Z">
+<meta property="article:author" content="Lei">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>git - Lei</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lllei.top","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lei</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="git"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-19 20:59" pubdate>
+          2022年9月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">git</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="1-basics"><a href="#1-basics" class="headerlink" title="1. basics"></a>1. basics</h3><ul>
+<li>ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;</a> &#x2F;&#x2F;-T 就是不分配伪终端，只显示连接信息<br>   测试能否连接到 github<br>   确定已经有添加 ssh 密钥，确定 config 文件配置正确，确定能 ping 通 github.com</li>
+<li>git init</li>
+<li>git add (.)</li>
+<li>git commit -m ‘’</li>
+<li>git status</li>
+<li>git rm</li>
+<li>git cherry-pick &lt;commit&gt; (复制一个特定的提交到当前分支)</li>
+<li>git blame filename 显示谁修改了文件</li>
+</ul>
+<h3 id="2-diff"><a href="#2-diff" class="headerlink" title="2. diff"></a>2. diff</h3><ul>
+<li>git diff 工作区与暂存区<br>– &lt;filename&gt; 指定文件(注意空格)</li>
+<li>git diff HEAD 工作区与 commit</li>
+<li>git diff –chached(暂存区与commit)</li>
+</ul>
+<p>即未使用参数，默认是工作区与 xx 比较</p>
+<h3 id="3-reset"><a href="#3-reset" class="headerlink" title="3. reset"></a>3. reset</h3><ul>
+<li>git reset &lt;file&gt; (将某文件从暂存区移除，不修改工作区,不加文件是所有)</li>
+<li>git reset –hard (移除暂存区修改，删除工作区修改)</li>
+<li>git reset &lt;commit&gt; (可以用 head^ 回滚到指定版本，清除暂存区，但保持工作区不变)</li>
+<li>git reset –hard &lt;commit&gt; (回滚到指定版本，清除暂存区，删除工作区修改)<br>git reflog 可以查看被删除的版本号</li>
+</ul>
+<p>–mixed 是默认参数，保留工作区，修改暂存区，不会移动 head 指针<br>–hard 修改工作区和暂存区，会移动 head 指针，此时提交会丢失指定版本之后的内容</p>
+<h3 id="4-branch"><a href="#4-branch" class="headerlink" title="4. branch"></a>4. branch</h3><ul>
+<li>git branch 显示分支</li>
+<li>git branch &lt;branchname&gt; 创建分支<br>   -d 删除</li>
+<li>git checkout &lt;branchname&gt; 切换分支<br>   -b &lt;name1&gt; (&lt;name2&gt;) 新建并切换到name1</li>
+<li>git merge &lt;branchname&gt; 采用 Fast Forward 合并分支(此模式不会显示合并信息)<br>   –no-ff 不使用 Fast Forward 模式，会显示合并信息，会产生新的 commit 所以同时需要 -m 参数</li>
+<li>git switch 作用同 checkout</li>
+<li>git cherry pick &lt;commit&gt; 复制一个特定的提交到当前的分支(指复制相同的改动操作)</li>
+<li>git rebase &lt;branchname&gt;</li>
+<li>git branch –set-upstream-to &lt;branch-name&gt; origin&#x2F;&lt;branch-name&gt; 关联上游分支，不用记，会有提示</li>
+</ul>
+<h3 id="5-remote"><a href="#5-remote" class="headerlink" title="5. remote"></a>5. remote</h3><ul>
+<li>git remote -v 查看远端仓库信息</li>
+<li>git remote add &lt;name&gt; &lt;url&gt;(eg:<a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:llleixx&#x2F;helloworld.git)</li>
+<li>git remote rm &lt;name&gt; 删除远程仓库的绑定</li>
+<li>git pull</li>
+<li>git push &lt;remotename&gt; &lt;branchname&gt;(:&lt;branchname&gt;) 将某个分支推送到远端某个分支<br>   -u 关联远程分支<br>   -f 强制</li>
+<li>git fetch</li>
+<li>git push origin –delete branchname  删除远端分支</li>
+<li>git clone &lt;name&gt; (eg:<a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a>:llleixx&#x2F;helloworld.git)</li>
+</ul>
+<h3 id="6-log"><a href="#6-log" class="headerlink" title="6. log"></a>6. log</h3><ul>
+<li>git log -&lt;limit&gt;<br>   &lt;limit&gt; 为最大显示数量</li>
+<li>git log – &lt;file&gt;</li>
+<li>git log –graph</li>
+<li>git relog (命令历史)</li>
+</ul>
+<h3 id="7-stash"><a href="#7-stash" class="headerlink" title="7. stash"></a>7. stash</h3><ul>
+<li>git stash 储存工作区和暂存区(切换分支会丢失工作区和暂存区信息)<br>   sava “message” 同时储存注释信息</li>
+<li>git stash list 查看</li>
+<li>git stash apply (&lt;stashname&gt;) 恢复但不删除stash，默认最新</li>
+<li>git stash drop (&lt;stashname&gt;) 删除stash</li>
+<li>git stash pop (&lt;stashname&gt;) 恢复并删除</li>
+</ul>
+<h3 id="8-tag"><a href="#8-tag" class="headerlink" title="8. tag"></a>8. tag</h3><ul>
+<li>git tag 查看所有标签</li>
+<li>git tag &lt;tagname&gt; 给 HEAD 指向打 tag<br>   -d 删除标签</li>
+<li>git tag &lt;tagname&gt; &lt;commit&gt;</li>
+<li>git tag -a &lt;tagname&gt; -m &lt;annotation&gt; &lt;commit&gt; 创有说明的标签</li>
+<li>git show &lt;tagname&gt; 显示说明</li>
+<li>git push origin &lt;tagname&gt; 推送某个标签<br>   –tags 是推送所有标签</li>
+</ul>
+<h3 id="9-config"><a href="#9-config" class="headerlink" title="9. config"></a>9. config</h3><ul>
+<li>git config –global –list</li>
+<li>git config –global user.name xx</li>
+<li>git config –global user.email “<a href="mailto:&#x65;&#109;&#x61;&#x69;&#x6c;&#64;&#101;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x65;&#109;&#x61;&#x69;&#x6c;&#64;&#101;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a> ”</li>
+</ul>
+<h2 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h2><ol>
+<li><p>HEAD表示当前分支最新提交版本，HEAD^上个版本，HEAD^^上上个版本，上100个版本可以写HEAD~100</p>
+</li>
+<li><p>git status 查看状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">Untracked files 未跟踪(新创建，从未add过的文件)<br>Changes not staged for commit 未add<br>Changes to be committed add但未commit<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>分支间相同文件进行不同修改会有冲突，此时merge失败<br>此时可以用 git status 告诉我们冲突文件<br>查看文件内容，Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容<br>修改(修改成你想要的样子，可以与所有分支都不同)，add，commit。就能成功合并了(不用再merge，相当于merge失败→修改→add，commit→合并成功)</p>
+</li>
+<li><p>origin&#x2F;dev 像调用本地分支一样调用远程分支(其实两者没什么差别)</p>
+</li>
+<li><p>使用 https 协议，可以通过设置 credential helper 来只用第一次输入密码<br>git config –global credential.helper store  &#x2F;&#x2F;这是全局配置，执行后，会在用户目录下(这里没有指定位置)生成 .git_credential 里面存储着账号和密码</p>
+</li>
+<li><p>使用 ssh(git) 协议更快，设置密钥后才能使用</p>
+</li>
+<li><p>git merge 和 git rebase</p>
+<p>git merge master feature 将 master 合并到 feature 上</p>
+<p>git merge 每次合并上游更改时 feature 分支都会引入一个外来的合并提交。如果 master 非常活跃的话，这或多或少会污染你的分支历史。</p>
+<p>git rebase 它会把整个 feature 分支移动到 master 分支的后面，有效地把所有 master 分支上新的提交并入过来。但是，rebase 为原分支上每一个提交创建一个新的提交，重写了项目历史，并且不会带来合并提交。</p>
+<p>不过，这种简单的提交历史会带来两个后果：安全性和可跟踪性。如果你违反了 rebase 黄金法则，重写项目历史可能会给你的协作工作流带来灾难性的影响。此外，rebase 不会有合并提交中附带的信息——你看不到 feature 分支中并入了上游的哪些更改。</p>
+<p>综上，rebase 适用于开发 feature 分支时，master 分支已经被更新，需要再在新的 master 分支下开发，这时就可以用 rebase 将当前分支移动到 新的master 分支后</p>
+</li>
+</ol>
+<h2 id="代码回滚"><a href="#代码回滚" class="headerlink" title="代码回滚"></a>代码回滚</h2><ol>
+<li><p>工作区：<br>git checkout – a.txt<br>git checkout – .  所有<br>git checkout &lt;commitID&gt;(head) &lt;filename&gt;</p>
+</li>
+<li><p>暂存区：<br>git reset HEAD .<br>git reset HEAD a.txt<br>不加参数是采用了默认的 –mixed 参数  </p>
+<p>只改变暂存区，所以如果想再还原工作区，需要用到1</p>
+</li>
+<li><p>本地分支<br>git log 得到提交id<br>git reset –hard HEAD^ 回到最新的一次提交<br>git reset –hard <commit_id> 回到你想要的版本<br>git reset HEAD^ 此时代码保留，回到 git add 之前</p>
+</li>
+<li><p>远程仓库<br>git log<br>git reset –hard <commit_id><br>git push -f origin HEAD(或者当前分支名) 强制提交<br>or<br>git revert HEAD<br>git push origin master(不用 -f 了)</p>
+</li>
+<li><p>git rever 和 git reset 区别</p>
+<p>- git revert是用一次新的commit来回滚之前的commit，此次提交之前的commit都会被保留；<br>- git reset是回到某次提交，提交及之前的commit都会被保留，但是此commit id之后的修改都会被删除</p>
+</li>
+<li><p>git commit –amend -m ‘sdfa’</p>
+<p>相当于删除上次提交，换成当前这次</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/program/" class="category-chain-item">program</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/program/tool/" class="category-chain-item">tool</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/git/">#git</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>git</div>
+      <div>http://lllei.top/2022/09/19/git/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Lei</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/07/hexo/" title="hexo">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">hexo</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

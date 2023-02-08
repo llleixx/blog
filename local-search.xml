@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>hexo</title>
+    <link href="/2023/02/07/hexo/"/>
+    <url>/2023/02/07/hexo/</url>
+    
+    <content type="html"><![CDATA[<ul><li>public 文件夹是网站的实质内容</li><li>scaffolds 存模板</li><li>source 里面可以存源资源文件（如 文档，css，js，图片等）</li><li>hexo g 就会将 source 里面的资源文件转化为网站静态文件到 public 中。如更新各页面的 index.html，将 post.md 转化为相应时间目录的 html 文件，复制 source&#x2F;images 等文件夹到 public 中（如 images）等等。</li><li>hexo new page test 将产生一个新页面，在 source 文件中生成 test&#x2F;index.md，<code>hexo g</code>后将会在 <code>public</code> 中产生相应文件夹及 html 文件。</li><li>但神奇的是，没有 <code>hexo clean</code> 清除 public 文件夹后仍可以访问 source 中的资源…(从此来看，是 hexo 没有 public 时，会实时渲染 source 中的资源？)</li><li>部署服务器可以用 githubaction 来 ftp 传输。也可以用 ssh 。</li><li>目前采用方案是本机存储所有，服务器只部署 public 文件夹。将笔记目录与 source 目录创建软链接，忽略本来目录的 .md 文件，需要发布时，将文件移入 _posts 文件中。部署设置设为 git，github 仓库也只存 public 文件夹，再用 githubaction 将 public 文件夹传到服务器上，可能需要考虑运行清空脚本。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>program</category>
+      
+      <category>tool</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+      <tag>tool</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>git</title>
+    <link href="/2022/09/19/git/"/>
+    <url>/2022/09/19/git/</url>
+    
+    <content type="html"><![CDATA[<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="1-basics"><a href="#1-basics" class="headerlink" title="1. basics"></a>1. basics</h3><ul><li>ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;</a> &#x2F;&#x2F;-T 就是不分配伪终端，只显示连接信息<br>   测试能否连接到 github<br>   确定已经有添加 ssh 密钥，确定 config 文件配置正确，确定能 ping 通 github.com</li><li>git init</li><li>git add (.)</li><li>git commit -m ‘’</li><li>git status</li><li>git rm</li><li>git cherry-pick &lt;commit&gt; (复制一个特定的提交到当前分支)</li><li>git blame filename 显示谁修改了文件</li></ul><h3 id="2-diff"><a href="#2-diff" class="headerlink" title="2. diff"></a>2. diff</h3><ul><li>git diff 工作区与暂存区<br>– &lt;filename&gt; 指定文件(注意空格)</li><li>git diff HEAD 工作区与 commit</li><li>git diff –chached(暂存区与commit)</li></ul><p>即未使用参数，默认是工作区与 xx 比较</p><h3 id="3-reset"><a href="#3-reset" class="headerlink" title="3. reset"></a>3. reset</h3><ul><li>git reset &lt;file&gt; (将某文件从暂存区移除，不修改工作区,不加文件是所有)</li><li>git reset –hard (移除暂存区修改，删除工作区修改)</li><li>git reset &lt;commit&gt; (可以用 head^ 回滚到指定版本，清除暂存区，但保持工作区不变)</li><li>git reset –hard &lt;commit&gt; (回滚到指定版本，清除暂存区，删除工作区修改)<br>git reflog 可以查看被删除的版本号</li></ul><p>–mixed 是默认参数，保留工作区，修改暂存区，不会移动 head 指针<br>–hard 修改工作区和暂存区，会移动 head 指针，此时提交会丢失指定版本之后的内容</p><h3 id="4-branch"><a href="#4-branch" class="headerlink" title="4. branch"></a>4. branch</h3><ul><li>git branch 显示分支</li><li>git branch &lt;branchname&gt; 创建分支<br>   -d 删除</li><li>git checkout &lt;branchname&gt; 切换分支<br>   -b &lt;name1&gt; (&lt;name2&gt;) 新建并切换到name1</li><li>git merge &lt;branchname&gt; 采用 Fast Forward 合并分支(此模式不会显示合并信息)<br>   –no-ff 不使用 Fast Forward 模式，会显示合并信息，会产生新的 commit 所以同时需要 -m 参数</li><li>git switch 作用同 checkout</li><li>git cherry pick &lt;commit&gt; 复制一个特定的提交到当前的分支(指复制相同的改动操作)</li><li>git rebase &lt;branchname&gt;</li><li>git branch –set-upstream-to &lt;branch-name&gt; origin&#x2F;&lt;branch-name&gt; 关联上游分支，不用记，会有提示</li></ul><h3 id="5-remote"><a href="#5-remote" class="headerlink" title="5. remote"></a>5. remote</h3><ul><li>git remote -v 查看远端仓库信息</li><li>git remote add &lt;name&gt; &lt;url&gt;(eg:<a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:llleixx&#x2F;helloworld.git)</li><li>git remote rm &lt;name&gt; 删除远程仓库的绑定</li><li>git pull</li><li>git push &lt;remotename&gt; &lt;branchname&gt;(:&lt;branchname&gt;) 将某个分支推送到远端某个分支<br>   -u 关联远程分支<br>   -f 强制</li><li>git fetch</li><li>git push origin –delete branchname  删除远端分支</li><li>git clone &lt;name&gt; (eg:<a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a>:llleixx&#x2F;helloworld.git)</li></ul><h3 id="6-log"><a href="#6-log" class="headerlink" title="6. log"></a>6. log</h3><ul><li>git log -&lt;limit&gt;<br>   &lt;limit&gt; 为最大显示数量</li><li>git log – &lt;file&gt;</li><li>git log –graph</li><li>git relog (命令历史)</li></ul><h3 id="7-stash"><a href="#7-stash" class="headerlink" title="7. stash"></a>7. stash</h3><ul><li>git stash 储存工作区和暂存区(切换分支会丢失工作区和暂存区信息)<br>   sava “message” 同时储存注释信息</li><li>git stash list 查看</li><li>git stash apply (&lt;stashname&gt;) 恢复但不删除stash，默认最新</li><li>git stash drop (&lt;stashname&gt;) 删除stash</li><li>git stash pop (&lt;stashname&gt;) 恢复并删除</li></ul><h3 id="8-tag"><a href="#8-tag" class="headerlink" title="8. tag"></a>8. tag</h3><ul><li>git tag 查看所有标签</li><li>git tag &lt;tagname&gt; 给 HEAD 指向打 tag<br>   -d 删除标签</li><li>git tag &lt;tagname&gt; &lt;commit&gt;</li><li>git tag -a &lt;tagname&gt; -m &lt;annotation&gt; &lt;commit&gt; 创有说明的标签</li><li>git show &lt;tagname&gt; 显示说明</li><li>git push origin &lt;tagname&gt; 推送某个标签<br>   –tags 是推送所有标签</li></ul><h3 id="9-config"><a href="#9-config" class="headerlink" title="9. config"></a>9. config</h3><ul><li>git config –global –list</li><li>git config –global user.name xx</li><li>git config –global user.email “<a href="mailto:&#x65;&#109;&#x61;&#x69;&#x6c;&#64;&#101;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x65;&#109;&#x61;&#x69;&#x6c;&#64;&#101;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a> ”</li></ul><h2 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h2><ol><li><p>HEAD表示当前分支最新提交版本，HEAD^上个版本，HEAD^^上上个版本，上100个版本可以写HEAD~100</p></li><li><p>git status 查看状态</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">Untracked files 未跟踪(新创建，从未add过的文件)<br>Changes not staged for commit 未add<br>Changes to be committed add但未commit<br></code></pre></td></tr></table></figure></li><li><p>分支间相同文件进行不同修改会有冲突，此时merge失败<br>此时可以用 git status 告诉我们冲突文件<br>查看文件内容，Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容<br>修改(修改成你想要的样子，可以与所有分支都不同)，add，commit。就能成功合并了(不用再merge，相当于merge失败→修改→add，commit→合并成功)</p></li><li><p>origin&#x2F;dev 像调用本地分支一样调用远程分支(其实两者没什么差别)</p></li><li><p>使用 https 协议，可以通过设置 credential helper 来只用第一次输入密码<br>git config –global credential.helper store  &#x2F;&#x2F;这是全局配置，执行后，会在用户目录下(这里没有指定位置)生成 .git_credential 里面存储着账号和密码</p></li><li><p>使用 ssh(git) 协议更快，设置密钥后才能使用</p></li><li><p>git merge 和 git rebase</p><p>git merge master feature 将 master 合并到 feature 上</p><p>git merge 每次合并上游更改时 feature 分支都会引入一个外来的合并提交。如果 master 非常活跃的话，这或多或少会污染你的分支历史。</p><p>git rebase 它会把整个 feature 分支移动到 master 分支的后面，有效地把所有 master 分支上新的提交并入过来。但是，rebase 为原分支上每一个提交创建一个新的提交，重写了项目历史，并且不会带来合并提交。</p><p>不过，这种简单的提交历史会带来两个后果：安全性和可跟踪性。如果你违反了 rebase 黄金法则，重写项目历史可能会给你的协作工作流带来灾难性的影响。此外，rebase 不会有合并提交中附带的信息——你看不到 feature 分支中并入了上游的哪些更改。</p><p>综上，rebase 适用于开发 feature 分支时，master 分支已经被更新，需要再在新的 master 分支下开发，这时就可以用 rebase 将当前分支移动到 新的master 分支后</p></li></ol><h2 id="代码回滚"><a href="#代码回滚" class="headerlink" title="代码回滚"></a>代码回滚</h2><ol><li><p>工作区：<br>git checkout – a.txt<br>git checkout – .  所有<br>git checkout &lt;commitID&gt;(head) &lt;filename&gt;</p></li><li><p>暂存区：<br>git reset HEAD .<br>git reset HEAD a.txt<br>不加参数是采用了默认的 –mixed 参数  </p><p>只改变暂存区，所以如果想再还原工作区，需要用到1</p></li><li><p>本地分支<br>git log 得到提交id<br>git reset –hard HEAD^ 回到最新的一次提交<br>git reset –hard <commit_id> 回到你想要的版本<br>git reset HEAD^ 此时代码保留，回到 git add 之前</p></li><li><p>远程仓库<br>git log<br>git reset –hard <commit_id><br>git push -f origin HEAD(或者当前分支名) 强制提交<br>or<br>git revert HEAD<br>git push origin master(不用 -f 了)</p></li><li><p>git rever 和 git reset 区别</p><p>- git revert是用一次新的commit来回滚之前的commit，此次提交之前的commit都会被保留；<br>- git reset是回到某次提交，提交及之前的commit都会被保留，但是此commit id之后的修改都会被删除</p></li><li><p>git commit –amend -m ‘sdfa’</p><p>相当于删除上次提交，换成当前这次</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>program</category>
+      
+      <category>tool</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
