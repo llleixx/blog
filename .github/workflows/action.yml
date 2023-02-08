@@ -1,7 +1,8 @@
 name: depoly on cloud server
 on:
   push:
-  - main
+    branches:
+    - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
