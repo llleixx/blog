@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>密码</title>
+    <link href="/2023/02/07/%E5%AF%86%E7%A0%81/"/>
+    <url>/2023/02/07/%E5%AF%86%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>散列（hash）函数，对称加密，非对称加密</p></li><li><p>散列函数无密钥，能被彩虹表（一种以空间换时间的密码破解算法）破解，但可以通过添加盐的方式使之更不容易被破解，目的是获得文件的摘要（hash 值），可用于密码验证。如 MD5，SHA-2 等。</p></li><li><p>对称加密是指加密和解密的密钥相同。</p></li><li><p>非对称加密指加密和解密的密钥不同。一般来说公钥加密，私钥解密（公钥是公开的，如果所有人都可以用公钥解密那加密就没有意义了）。在数字签名时用私钥加密，公钥解密。即公钥和私钥都可以用来加密或解密。按照RSA算法的定义，公钥是(n,e) 私钥是(n,d)。从数学角度来说地位对等的。</p><p>  这只是从加密算法的角度讲，但实际上，私钥文件可以计算出公钥文件。这是因为私钥文件会包含更多信息（你会发现私钥文件更长），根据 pkcs （全称Public-Key Cryptography Standards （公开秘钥加密标准 ）），私钥包含(n,e,d,p,q)，公钥包含(n,e)。</p></li><li><p>对称加密常见有 AES，DES，IDEA；非对称加密常见有 RSA 算法</p></li><li><p>压缩包密码用到的就是对称加密，密钥即是输入的密码，但密码常常位数不够，需要 PBE（Password Based Encryption）算出真正的密钥。下载完整性验证用的散列函数。</p></li><li><p>为了解决传递密钥问题，提出了 DH 算法，确切来说 DH 算法是密钥协商算法，利用数学理论相互之间传递一些公开的值，自己保留一些值，最后计算出来的结果是一样的（神奇）。</p></li><li><p>非对称加密的有效攻击方式是中间人攻击。</p></li><li><p>签名算法是指私钥加密，公钥解密来确认是否是某个发送方发出的，使之不能被伪造。现实应用中不是对原始消息签名，而是对原始消息的 hash 值进行签名。而解密时将解密内容与 hash 值进行对比。</p><p>  数字签名用于：</p><ol><li>防止伪造；</li><li>防止抵赖；</li><li>防止篡改。</li></ol><p>  常用的数字签名算法包括：MD5withRSA／SHA1withRSA／SHA256withRSA／SHA1withDSA／SHA256withDSA／SHA512withDSA／ECDSA等。</p></li><li><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304227968188450">数字证书</a></p></li><li><p><a href="https://blog.csdn.net/zyz770834013/article/details/81380608">ssh 具体流程</a>，服务器可能会被多个客户端连接，所以应该存公钥（否则私钥泄露），具体流程见链接。SSH 用账号密码登录也会有临时的不对称加密，所用到的公钥私钥不同于事先生成的。</p></li><li><p><a href="https://www.cnblogs.com/xjnotxj/p/9311160.html">ssh 学习</a></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>program</category>
+      
+      <category>other</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>cryptography</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hexo</title>
     <link href="/2023/02/07/hexo/"/>
     <url>/2023/02/07/hexo/</url>
@@ -27,6 +54,19 @@
       <tag>tool</tag>
       
     </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2023/02/01/markdown/"/>
+    <url>/2023/02/01/markdown/</url>
+    
+    <content type="html"><![CDATA[<h2 id="some-tips"><a href="#some-tips" class="headerlink" title="some tips"></a>some tips</h2><ol><li>use # for head.</li><li>use two spaces and a return or &lt;br&gt; for a line break.</li><li>use a blank line for another paragraph.</li><li>use ** ** for bold.</li><li>use * * for italic.</li><li>use *** for bold and italic.</li><li>use &gt; for blockquotes.</li><li>use 1. for ordered list.</li><li>use - for unordered list.</li><li>use four spaces or a tab for adding elementsin list(remember to add a blank line to indicate it’s a new paragraph, or it maybe just a space. Associate it with the knowledge of block in html).</li><li>use `&#96;&#96; &#96;&#96;&#96; for block code.</li><li>use ` &#96; for inline code.</li><li>use double backticks enclosing the word for escaping `. like <code>he`llo</code></li><li>look link like this <a href="https://www.google.com/" title="google">google</a>.</li><li>quickly turn a URL or email address into a link. <a href="mailto:&#108;&#x6c;&#x6c;&#x65;&#105;&#103;&#x6f;&#105;&#110;&#x67;&#64;&#x67;&#x61;&#x6d;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#108;&#x6c;&#x6c;&#x65;&#105;&#103;&#x6f;&#105;&#110;&#x67;&#64;&#x67;&#x61;&#x6d;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> <a href="https://www.google.com/">https://www.google.com</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#formatting-links">Formatting Links</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#reference-style-links">Reference-style Links</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#linking-images">Linking Images</a></li><li>see extended syntax <a href="https://www.markdownguide.org/extended-syntax/">https://www.markdownguide.org/extended-syntax/</a></li><li>GFM doesn’t support</li></ol>]]></content>
+    
+    
     
   </entry>
   

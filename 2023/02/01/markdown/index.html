@@ -16,23 +16,21 @@
   <meta name="author" content="Lei">
   <meta name="keywords" content="">
   
-    <meta name="description" content="public 文件夹是网站的实质内容 scaffolds 存模板 source 里面可以存源资源文件（如 文档，css，js，图片等） hexo g 就会将 source 里面的资源文件转化为网站静态文件到 public 中。如更新各页面的 index.html，将 post.md 转化为相应时间目录的 html 文件，复制 source&#x2F;images 等文件夹到 public 中（如">
+    <meta name="description" content="some tips use # for head. use two spaces and a return or &lt;br&gt; for a line break. use a blank line for another paragraph. use ** ** for bold. use * * for italic. use *** for bold and italic. use &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo">
-<meta property="og:url" content="http://lllei.top/2023/02/07/hexo/index.html">
+<meta property="og:title" content="Lei">
+<meta property="og:url" content="http://lllei.top/2023/02/01/markdown/index.html">
 <meta property="og:site_name" content="Lei">
-<meta property="og:description" content="public 文件夹是网站的实质内容 scaffolds 存模板 source 里面可以存源资源文件（如 文档，css，js，图片等） hexo g 就会将 source 里面的资源文件转化为网站静态文件到 public 中。如更新各页面的 index.html，将 post.md 转化为相应时间目录的 html 文件，复制 source&#x2F;images 等文件夹到 public 中（如">
+<meta property="og:description" content="some tips use # for head. use two spaces and a return or &lt;br&gt; for a line break. use a blank line for another paragraph. use ** ** for bold. use * * for italic. use *** for bold and italic. use &amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-07T05:52:06.753Z">
-<meta property="article:modified_time" content="2023-02-08T03:26:09.276Z">
+<meta property="article:published_time" content="2023-02-01T09:37:01.708Z">
+<meta property="article:modified_time" content="2023-02-14T09:13:50.483Z">
 <meta property="article:author" content="Lei">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="tool">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>hexo - Lei</title>
+  <title>Lei</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -209,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-07 13:52" pubdate>
-          2023年2月7日 下午
+        <time datetime="2023-02-01 17:37" pubdate>
+          2023年2月1日 下午
         </time>
       </span>
     
@@ -221,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          550 字
+          825 字
         
       </span>
     
@@ -232,7 +230,7 @@
         
         
         
-          5 分钟
+          7 分钟
         
       </span>
     
@@ -270,21 +268,33 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">hexo</h1>
+            <h1 style="display: none"></h1>
             
             
               <div class="markdown-body">
                 
-                <ul>
-<li>public 文件夹是网站的实质内容</li>
-<li>scaffolds 存模板</li>
-<li>source 里面可以存源资源文件（如 文档，css，js，图片等）</li>
-<li>hexo g 就会将 source 里面的资源文件转化为网站静态文件到 public 中。如更新各页面的 index.html，将 post.md 转化为相应时间目录的 html 文件，复制 source&#x2F;images 等文件夹到 public 中（如 images）等等。</li>
-<li>hexo new page test 将产生一个新页面，在 source 文件中生成 test&#x2F;index.md，<code>hexo g</code>后将会在 <code>public</code> 中产生相应文件夹及 html 文件。</li>
-<li>但神奇的是，没有 <code>hexo clean</code> 清除 public 文件夹后仍可以访问 source 中的资源…(从此来看，是 hexo 没有 public 时，会实时渲染 source 中的资源？)</li>
-<li>部署服务器可以用 githubaction 来 ftp 传输。也可以用 ssh 。</li>
-<li>目前采用方案是本机存储所有，服务器只部署 public 文件夹。将笔记目录与 source 目录创建软链接，忽略本来目录的 .md 文件，需要发布时，将文件移入 _posts 文件中。部署设置设为 git，github 仓库也只存 public 文件夹，再用 githubaction 将 public 文件夹传到服务器上，可能需要考虑运行清空脚本。</li>
-</ul>
+                <h2 id="some-tips"><a href="#some-tips" class="headerlink" title="some tips"></a>some tips</h2><ol>
+<li>use # for head.</li>
+<li>use two spaces and a return or &lt;br&gt; for a line break.</li>
+<li>use a blank line for another paragraph.</li>
+<li>use ** ** for bold.</li>
+<li>use * * for italic.</li>
+<li>use *** for bold and italic.</li>
+<li>use &gt; for blockquotes.</li>
+<li>use 1. for ordered list.</li>
+<li>use - for unordered list.</li>
+<li>use four spaces or a tab for adding elementsin list(remember to add a blank line to indicate it’s a new paragraph, or it maybe just a space. Associate it with the knowledge of block in html).</li>
+<li>use `&#96;&#96; &#96;&#96;&#96; for block code.</li>
+<li>use ` &#96; for inline code.</li>
+<li>use double backticks enclosing the word for escaping `. like <code>he`llo</code></li>
+<li>look link like this <a target="_blank" rel="noopener" href="https://www.google.com/" title="google">google</a>.</li>
+<li>quickly turn a URL or email address into a link. <a href="mailto:&#108;&#x6c;&#x6c;&#x65;&#105;&#103;&#x6f;&#105;&#110;&#x67;&#64;&#x67;&#x61;&#x6d;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#108;&#x6c;&#x6c;&#x65;&#105;&#103;&#x6f;&#105;&#110;&#x67;&#64;&#x67;&#x61;&#x6d;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> <a target="_blank" rel="noopener" href="https://www.google.com/">https://www.google.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.markdownguide.org/basic-syntax/#formatting-links">Formatting Links</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.markdownguide.org/basic-syntax/#reference-style-links">Reference-style Links</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.markdownguide.org/basic-syntax/#linking-images">Linking Images</a></li>
+<li>see extended syntax <a target="_blank" rel="noopener" href="https://www.markdownguide.org/extended-syntax/">https://www.markdownguide.org/extended-syntax/</a></li>
+<li>GFM doesn’t support</li>
+</ol>
 
                 
               </div>
@@ -293,43 +303,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/program/" class="category-chain-item">program</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/program/tool/" class="category-chain-item">tool</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/hexo/">#hexo</a>
-      
-        <a href="/tags/tool/">#tool</a>
-      
-    </div>
   
 </div>
 
@@ -339,8 +312,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo</div>
-      <div>http://lllei.top/2023/02/07/hexo/</div>
+      <div></div>
+      <div>http://lllei.top/2023/02/01/markdown/</div>
     </div>
     <div class="license-meta">
       
@@ -352,7 +325,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月7日</div>
+          <div>2023年2月1日</div>
         </div>
       
       
@@ -384,9 +357,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/07/%E5%AF%86%E7%A0%81/" title="密码">
+                      <a href="/2023/02/07/hexo/" title="hexo">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">密码</span>
+                        <span class="hidden-mobile">hexo</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -394,8 +367,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/01/markdown/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2022/09/19/git/" title="git">
+                        <span class="hidden-mobile">git</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
