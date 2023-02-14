@@ -60,13 +60,27 @@
   
   
   <entry>
-    <title></title>
+    <title>markdown tips</title>
     <link href="/2023/02/01/markdown/"/>
     <url>/2023/02/01/markdown/</url>
     
-    <content type="html"><![CDATA[<h2 id="some-tips"><a href="#some-tips" class="headerlink" title="some tips"></a>some tips</h2><ol><li>use # for head.</li><li>use two spaces and a return or &lt;br&gt; for a line break.</li><li>use a blank line for another paragraph.</li><li>use ** ** for bold.</li><li>use * * for italic.</li><li>use *** for bold and italic.</li><li>use &gt; for blockquotes.</li><li>use 1. for ordered list.</li><li>use - for unordered list.</li><li>use four spaces or a tab for adding elementsin list(remember to add a blank line to indicate it’s a new paragraph, or it maybe just a space. Associate it with the knowledge of block in html).</li><li>use `&#96;&#96; &#96;&#96;&#96; for block code.</li><li>use ` &#96; for inline code.</li><li>use double backticks enclosing the word for escaping `. like <code>he`llo</code></li><li>look link like this <a href="https://www.google.com/" title="google">google</a>.</li><li>quickly turn a URL or email address into a link. <a href="mailto:&#108;&#x6c;&#x6c;&#x65;&#105;&#103;&#x6f;&#105;&#110;&#x67;&#64;&#x67;&#x61;&#x6d;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#108;&#x6c;&#x6c;&#x65;&#105;&#103;&#x6f;&#105;&#110;&#x67;&#64;&#x67;&#x61;&#x6d;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> <a href="https://www.google.com/">https://www.google.com</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#formatting-links">Formatting Links</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#reference-style-links">Reference-style Links</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#linking-images">Linking Images</a></li><li>see extended syntax <a href="https://www.markdownguide.org/extended-syntax/">https://www.markdownguide.org/extended-syntax/</a></li><li>GFM doesn’t support</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="some-tips"><a href="#some-tips" class="headerlink" title="some tips"></a>some tips</h2><ol><li>use # for head.</li><li>use two spaces and a return or &lt;br&gt; for a line break.</li><li>use a blank line for another paragraph.</li><li>use ** ** for bold.</li><li>use * * for italic.</li><li>use *** for bold and italic.</li><li>use &gt; for blockquotes.</li><li>use 1. for ordered list.</li><li>use - for unordered list.</li><li>use four spaces or a tab for adding elementsin list(remember to add a blank line to indicate it’s a new paragraph, or it maybe just a space. Associate it with the knowledge of block in html).</li><li>use `&#96;&#96; &#96;&#96;&#96; for block code.</li><li>use ` &#96; for inline code.</li><li>use double backticks enclosing the word for escaping `. like <code>he`llo</code></li><li>look link like this <a href="https://www.google.com/" title="google">google</a>.</li><li>quickly turn a URL or email address into a link. <a href="mailto:&#108;&#x6c;&#x6c;&#101;&#x69;&#x67;&#111;&#x69;&#110;&#x67;&#64;&#x67;&#97;&#x6d;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#108;&#x6c;&#x6c;&#101;&#x69;&#x67;&#111;&#x69;&#110;&#x67;&#64;&#x67;&#97;&#x6d;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a> <a href="https://www.google.com/">https://www.google.com</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#formatting-links">Formatting Links</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#reference-style-links">Reference-style Links</a></li><li><a href="https://www.markdownguide.org/basic-syntax/#linking-images">Linking Images</a></li><li>see extended syntax <a href="https://www.markdownguide.org/extended-syntax/">https://www.markdownguide.org/extended-syntax/</a></li><li>GFM doesn’t support</li></ol>]]></content>
     
     
+    <categories>
+      
+      <category>program</category>
+      
+      <category>other</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>markdown</tag>
+      
+    </tags>
     
   </entry>
   
