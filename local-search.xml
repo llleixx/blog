@@ -8,7 +8,7 @@
     <link href="/2023/03/09/codeforces0/"/>
     <url>/2023/03/09/codeforces0/</url>
     
-    <content type="html"><![CDATA[<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><ol><li><p>debug 能力太弱，因为一个小错误 de 了很久（而且代码 bug 意外多）</p></li><li><p>倍增树状数组不熟练</p></li><li><p>打 E 时以为 30 分钟可以，事实上确实可以。但</p><ol><li>最后频繁切页面看时间</li><li>最后因为多测试没清空而耽误时间</li><li>虽然第一反应是没清空，立马找到了树状数组，但手抖用 vim 粘贴按错了几次</li><li>树状数组维护不可逆信息不熟练</li></ol><p> 所以没交上去</p></li><li><p>发现现在即使没有复健完，也能做一些题，以后可以多参加</p></li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>debug 能力</li><li>改掉最后时刻看时间</li><li>一开始就注意多测试</li><li>倍增树状数组和树状数组维护不可逆信息</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><ol><li><p>debug 能力太弱，因为一个小错误 de 了很久（而且代码 bug 意外多）</p></li><li><p>倍增树状数组不熟练</p></li><li><p>打 E 时以为 30 分钟可以，事实上确实可以。但</p><ol><li>最后频繁切页面看时间</li><li>最后因为多测试没清空而耽误时间</li><li>虽然第一反应是没清空，立马找到了树状数组，但手抖用 vim 粘贴按错了几次</li><li>树状数组维护不可逆信息不熟练</li></ol><p> <strong>所以没交上去</strong> :)</p></li><li><p>发现现在即使没有复健完，也能做一些题，以后可以多参加</p></li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>debug 能力</li><li>改掉最后时刻看时间</li><li>一开始就注意多测试</li><li>倍增树状数组和树状数组维护不可逆信息</li></ol>]]></content>
     
     
     <categories>
@@ -23,6 +23,33 @@
     <tags>
       
       <tag>codeforces</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>编码</title>
+    <link href="/2023/02/15/%E7%BC%96%E7%A0%81/"/>
+    <url>/2023/02/15/%E7%BC%96%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<p>参考：<a href="https://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">博客</a></p><h2 id="ASCII-编码"><a href="#ASCII-编码" class="headerlink" title="ASCII 编码"></a>ASCII 编码</h2><p>规定了 128 个字符编码。只占用一个字节的 7 位，最高位统一为 0</p><h2 id="非-ASCII-编码"><a href="#非-ASCII-编码" class="headerlink" title="非 ASCII 编码"></a>非 ASCII 编码</h2><p>因为 ASCIi 编码不够，所以需要 GB2312 等编码</p><h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>Unicode，如其名字，给所有符号（包括一些 emoji）进行编码。可查询 &lt;unicode.org&gt;</p><p>但 Unicode 只规定了符号的二进制代码，没规定二进制代码如何存储。如<strong>严</strong>字，Unicode 是十六进制数 <code>4E25</code>，二进制有 15 位，至少两个字节。还可能需要 3 个字节，4 个字节，甚至更多。</p><p>这就有问题。怎么知道一个字符有几个字节。如果规定字节，那么浪费太多。所以这样 Unicode 一直没有推广</p><h2 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h2><p>UTF-8 是<strong>一种 Unicode 的实现方式</strong>，是一种变长的编码方式，可以用 1~4 个字节表示一个符号。注意 GB2312，GBK 不是 Unicode 的实现方式</p><p>编码规则：</p><ol><li><p>对于单字节的符号，字节的第一位设为0，后面7位为这个符号的 Unicode 码。因此对于英语字母，UTF-8 编码和 ASCII 码是相同的。</p></li><li><p>对于n字节的符号（n &gt; 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码</p><p> 10 开头的好处即 <a href="https://en.wikipedia.org/wiki/Self-synchronizing_code">self-synchronizing code</a>，假设一个及其糟糕的场景，文本开头丢失了一个字节，造成了后续所有文本的失效，当然没有 self-syschronizing 特性的编码还有很多其他坏处，参见 <a href="https://stackoverflow.com/questions/53009692/utf-8-encoding-why-prefix-10">为什么 UTF-8 以 10 开头</a></p></li><li><p><a href="https://baike.baidu.com/item/ANSI/10401940">ANSI 编码</a>，ANSI 不是一种特定的编码，在不同系统中表示不同的编码，具体是以 <a href="https://en.wikipedia.org/wiki/Code_page">Windows code pages</a> 区分，如 936 的 GBK，950 的 Big-5</p></li><li><p>notepad 中 UTF-8 LE UTF-8 BE 分别代表的是小端还是大端。</p></li><li><p><a href="https://en.wikipedia.org/wiki/Byte_order_mark">Byte_order_mark</a>，每个文件最前面分别加入一个表示编码顺序的字符，用 FEFF 表示（在 Unicode 中代表 零宽度非换行空格），正好两个字节，而且 FF 比 FE 大 1，根据这两个字节谁在前谁在后判断是什么顺序。对于 UTF-8 则是添加其对应的 <code>EF BB BF</code> 来判断。注意这是可选的，添加了反而可能会对一些软件造成干扰</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>program</category>
+      
+      <category>other</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>encode</tag>
       
     </tags>
     
