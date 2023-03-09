@@ -4,11 +4,38 @@
   
   
   <entry>
+    <title>codeforces0</title>
+    <link href="/2023/03/09/codeforces0/"/>
+    <url>/2023/03/09/codeforces0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><ol><li><p>debug 能力太弱，因为一个小错误 de 了很久（而且代码 bug 意外多）</p></li><li><p>倍增树状数组不熟练</p></li><li><p>打 E 时以为 30 分钟可以，事实上确实可以。但</p><ol><li>最后频繁切页面看时间</li><li>最后因为多测试没清空而耽误时间</li><li>虽然第一反应是没清空，立马找到了树状数组，但手抖用 vim 粘贴按错了几次</li><li>树状数组维护不可逆信息不熟练</li></ol><p> 所以没交上去</p></li><li><p>发现现在即使没有复健完，也能做一些题，以后可以多参加</p></li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>debug 能力</li><li>改掉最后时刻看时间</li><li>一开始就注意多测试</li><li>倍增树状数组和树状数组维护不可逆信息</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>program</category>
+      
+      <category>codeforces</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>codeforces</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>密码</title>
     <link href="/2023/02/07/%E5%AF%86%E7%A0%81/"/>
     <url>/2023/02/07/%E5%AF%86%E7%A0%81/</url>
     
-    <content type="html"><![CDATA[<ul><li><p>散列（hash）函数，对称加密，非对称加密</p></li><li><p>散列函数无密钥，能被彩虹表（一种以空间换时间的密码破解算法）破解，但可以通过添加盐的方式使之更不容易被破解，目的是获得文件的摘要（hash 值），可用于密码验证。如 MD5，SHA-2 等。</p></li><li><p>对称加密是指加密和解密的密钥相同。</p></li><li><p>非对称加密指加密和解密的密钥不同。一般来说公钥加密，私钥解密（公钥是公开的，如果所有人都可以用公钥解密那加密就没有意义了）。在数字签名时用私钥加密，公钥解密。即公钥和私钥都可以用来加密或解密。按照RSA算法的定义，公钥是(n,e) 私钥是(n,d)。从数学角度来说地位对等的。</p><p>  这只是从加密算法的角度讲，但实际上，私钥文件可以计算出公钥文件。这是因为私钥文件会包含更多信息（你会发现私钥文件更长），根据 pkcs （全称Public-Key Cryptography Standards （公开秘钥加密标准 ）），私钥包含(n,e,d,p,q)，公钥包含(n,e)。</p></li><li><p>对称加密常见有 AES，DES，IDEA；非对称加密常见有 RSA 算法</p></li><li><p>压缩包密码用到的就是对称加密，密钥即是输入的密码，但密码常常位数不够，需要 PBE（Password Based Encryption）算出真正的密钥。下载完整性验证用的散列函数。</p></li><li><p>为了解决传递密钥问题，提出了 DH 算法，确切来说 DH 算法是密钥协商算法，利用数学理论相互之间传递一些公开的值，自己保留一些值，最后计算出来的结果是一样的（神奇）。</p></li><li><p>非对称加密的有效攻击方式是中间人攻击。</p></li><li><p>签名算法是指私钥加密，公钥解密来确认是否是某个发送方发出的，使之不能被伪造。现实应用中不是对原始消息签名，而是对原始消息的 hash 值进行签名。而解密时将解密内容与 hash 值进行对比。</p><p>  数字签名用于：</p><ol><li>防止伪造；</li><li>防止抵赖；</li><li>防止篡改。</li></ol><p>  常用的数字签名算法包括：MD5withRSA／SHA1withRSA／SHA256withRSA／SHA1withDSA／SHA256withDSA／SHA512withDSA／ECDSA等。</p></li><li><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304227968188450">数字证书</a></p></li><li><p><a href="https://blog.csdn.net/zyz770834013/article/details/81380608">ssh 具体流程</a>，服务器可能会被多个客户端连接，所以应该存公钥（否则私钥泄露），具体流程见链接。SSH 用账号密码登录也会有临时的不对称加密，所用到的公钥私钥不同于事先生成的。</p></li><li><p><a href="https://www.cnblogs.com/xjnotxj/p/9311160.html">ssh 学习</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<ul><li><p>散列（hash）函数，对称加密，非对称加密</p></li><li><p>散列函数无密钥，能被彩虹表（一种以空间换时间的密码破解算法）破解，但可以通过添加盐的方式使之更不容易被破解，目的是获得文件的摘要（hash 值），可用于密码验证。如 MD5，SHA-2 等。</p></li><li><p>对称加密是指加密和解密的密钥相同。</p></li><li><p>非对称加密指加密和解密的密钥不同。一般来说公钥加密，私钥解密（公钥是公开的，如果所有人都可以用公钥解密那加密就没有意义了）。在数字签名时用私钥加密，公钥解密。即公钥和私钥都可以用来加密或解密。按照RSA算法的定义，公钥是(n,e) 私钥是(n,d)。从数学角度来说地位对等的。</p><p>  这只是从加密算法的角度讲，但实际上，私钥文件可以计算出公钥文件。这是因为私钥文件会包含更多信息（你会发现私钥文件更长），根据 pkcs （全称Public-Key Cryptography Standards （公开秘钥加密标准 ）），私钥包含(n,e,d,p,q)，公钥包含(n,e)。</p></li><li><p>对称加密常见有 AES，DES，IDEA；非对称加密常见有 RSA 算法</p></li><li><p>压缩包密码用到的就是对称加密，密钥即是输入的密码，但密码常常位数不够，需要 PBE（Password Based Encryption）算出真正的密钥。下载完整性验证用的散列函数。</p></li><li><p>为了解决传递密钥问题，提出了 DH 算法，确切来说 DH 算法是密钥协商算法，利用数学理论相互之间传递一些公开的值，自己保留一些值，最后计算出来的结果是一样的（神奇）。</p></li><li><p>非对称加密的有效攻击方式是中间人攻击。</p></li><li><p>签名算法是指私钥加密，公钥解密来确认是否是某个发送方发出的，使之不能被伪造。现实应用中不是对原始消息签名，而是对原始消息的 hash 值进行签名。而解密时将解密内容与 hash 值进行对比。</p><p>  数字签名用于：</p><ol><li>防止伪造；</li><li>防止抵赖；</li><li>防止篡改。</li></ol><p>  常用的数字签名算法包括：MD5withRSA／SHA1withRSA／SHA256withRSA／SHA1withDSA／SHA256withDSA／SHA512withDSA／ECDSA等。</p></li><li><p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304227968188450">数字证书</a><br>  <a href="https://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">证书</a></p></li><li><p><a href="https://blog.csdn.net/zyz770834013/article/details/81380608">ssh 具体流程</a>，服务器可能会被多个客户端连接，所以应该存公钥（否则私钥泄露），具体流程见链接。SSH 用账号密码登录也会有临时的不对称加密，所用到的公钥私钥不同于事先生成的。</p></li><li><p><a href="https://www.cnblogs.com/xjnotxj/p/9311160.html">ssh 学习</a></p><p>  <a href="https://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html">端口转发</a></p></li></ul>]]></content>
     
     
     <categories>
